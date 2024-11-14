@@ -56,4 +56,23 @@ describe("test LineString", () => {
         expect(l.getPointN(0)).to.deep.equal(p1);
         expect(l.getPointN(1)).to.deep.equal(p2);
     });
+
+
+    it("test envelope", () => {
+        const p1 = new Point([1.0, 2.0]);
+        const p2 = new Point([2.0, 3.0]);
+        const l = new LineString([p1, p2]);
+        const env = l.getEnvelope();
+
+        expect(env.getXmin()).to.equal(1.0);
+        expect(env.getXmax()).to.equal(2.0);
+        expect(env.getYmin()).to.equal(2.0);
+        expect(env.getYmax()).to.equal(3.0);
+        expect(env.isEmpty()).to.equal(false);
+
+        const out = "bottom left : " + 1.0 + " " + 2.0 + " top right : " + 2.0 + " " + 3.0;
+        expect(env.toString()).to.equal(out);
+    });
+
+
 });

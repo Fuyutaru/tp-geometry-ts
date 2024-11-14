@@ -39,6 +39,20 @@ describe("test Point", () => {
         expect(p.getCoordinate()).to.deep.equal([4.0,5.0]);
     });
 
+    it("test envelope", () => {
+        const p = new Point([3.0,4.0]);
+        const env = p.getEnvelope();
+
+        expect(env.getXmin()).to.equal(3.0);
+        expect(env.getXmax()).to.equal(3.0);
+        expect(env.getYmin()).to.equal(4.0);
+        expect(env.getYmax()).to.equal(4.0);
+        expect(env.isEmpty()).to.equal(false);
+
+        const out = "bottom left : " + 3.0 + " " + 4.0 + " top right : " + 3.0 + " " + 4.0;
+        expect(env.toString()).to.equal(out);
+    });
+
 
 });
 
