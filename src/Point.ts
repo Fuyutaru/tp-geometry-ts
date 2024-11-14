@@ -1,7 +1,7 @@
 import Coordinate from "./Coordinate";
 import Geometry from "./Geometry";
 
-export default class points implements Geometry{
+export default class Point implements Geometry{
   private coordinate?: Coordinate;
 
   constructor(coordinate?: Coordinate) {
@@ -19,6 +19,13 @@ export default class points implements Geometry{
   translate(dx: number, dy: number): void {
     this.coordinate[0] += dx;
     this.coordinate[1] += dy;
+  }
+
+  clone(): Point {
+    let x = this.x();
+    let y = this.y();
+    const c = new Point([x,y]);
+    return c;
   }
 
   getCoordinate(): Coordinate {

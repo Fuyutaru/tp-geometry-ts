@@ -27,6 +27,18 @@ describe("test Point", () => {
         expect(p.getType()).to.equal("Point");
     });
 
+    it("test clone", () => {
+        const p = new Point([3.0,4.0]);
+        const copy = p.clone();
+        p.translate(1.0, 1.0);
+        expect(copy.getCoordinate()).to.deep.equal([3.0,4.0]);
+        expect(p.getCoordinate()).to.deep.equal([4.0,5.0]);
+
+        copy.translate(10.0,10.0);
+        expect(copy.getCoordinate()).to.deep.equal([13.0,14.0]);
+        expect(p.getCoordinate()).to.deep.equal([4.0,5.0]);
+    });
+
 
 });
 
