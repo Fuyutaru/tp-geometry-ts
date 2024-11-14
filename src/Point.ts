@@ -5,7 +5,7 @@ export default class points implements Geometry{
   private coordinate?: Coordinate;
 
   constructor(coordinate?: Coordinate) {
-    this.coordinate = coordinate ? coordinate : [];
+    this.coordinate = coordinate ? coordinate : [Number.NaN, Number.NaN];
   }
 
   getType(): string {
@@ -13,7 +13,12 @@ export default class points implements Geometry{
   }
 
   isEmpty(): boolean {
-    return this.coordinate.length == 0;
+    return Number.isNaN(this.coordinate[0]) && Number.isNaN(this.coordinate[1]);
+  }
+
+  translate(dx: number, dy: number): void {
+    this.coordinate[0] += dx;
+    this.coordinate[1] += dy;
   }
 
   getCoordinate(): Coordinate {
