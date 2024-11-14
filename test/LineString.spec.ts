@@ -7,6 +7,7 @@ describe("test LineString", () => {
     it("test default constructor", () => {
         const l = new LineString();
         expect(l.getNumPoints()).to.equal(0);
+        expect(l.getPointN(0)).to.deep.equal(new Point);
     });
     it("test constructor with points", () => {
         const p1 = new Point([1.0, 2.0]);
