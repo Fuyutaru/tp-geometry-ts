@@ -74,7 +74,9 @@ describe("test WktWriter", () => {
 
         const writer = new WktWriter();
 
-        // expect(writer.write(r)).to.throw(TypeError, "geometry type not supported");
+        expect(()=>{
+            writer.write(r)
+        }).to.throw(TypeError, "geometry type not supported");
 
     });
 
