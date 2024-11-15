@@ -1,9 +1,16 @@
+import AbstractGeometry from "./AbstractGeometry";
+import Geometry from "./Geometry";
+import GeometryCollection from "./GeometryCollection";
 import GeometryVisitor from "./GeometryVisitor";
 import LineString from "./LineString";
 import Point from "./Point";
 
 export default class WktVisitor implements GeometryVisitor{
     private buffer: String;
+
+    constructor(){
+        this.buffer = "";
+    }
 
     visitPoint(point: Point) {
         let wkt = "";
@@ -15,7 +22,7 @@ export default class WktVisitor implements GeometryVisitor{
             let y = point.y();
             wkt = "POINT(" + x.toFixed(1) + " " + y.toFixed(1) + ")";
         }
-        this.buffer = wkt;
+        this.buffer += wkt; // TODO : test
     }
 
     visitLineString(linestring: LineString) {
@@ -39,7 +46,24 @@ export default class WktVisitor implements GeometryVisitor{
 
             }
         }
-        this.buffer = wkt;
+        this.buffer += wkt;
+    }
+
+    visitGeometryCollection(g: GeometryCollection) {
+        if (g.isEmpty()){
+            this.buffer += "GEOMETRYCOLLECTION EMPTY";
+        }
+        else{
+            this.buffer += "GEOMETRYCOLLECTION(";
+            for(let i = 0; i < g.getNumGeometries(); i++){
+                if ( i != 0 ){
+                    this.buffer += ",";
+                }
+                g.getGeometryN(i).accept(this);
+            }
+            this.buffer += ")";
+        }
+
     }
 
     getResult(): String{

@@ -1,3 +1,4 @@
+import GeometryCollection from "./GeometryCollection";
 import GeometryVisitor from "./GeometryVisitor";
 import LineString from "./LineString";
 import Point from "./Point";
@@ -36,4 +37,23 @@ export default class LogGeometryVisitor implements GeometryVisitor{
             }
         }
     }
+
+
+    visitGeometryCollection(g: GeometryCollection) {
+        if (g.isEmpty()){
+            this.log("Je suis une collection vide.");
+        }
+
+        else{
+            const n = g.getNumGeometries();
+            if (n > 1){
+                this.log("Je suis une collection définie par " + n + " géométries.");
+            }
+            else{
+                this.log("Je suis une collection définie par " + n + " géométrie.");
+            }
+        }
+    }
+
+
 }
