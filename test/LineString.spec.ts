@@ -75,4 +75,15 @@ describe("test LineString", () => {
     });
 
 
+    it("test asText", () => {
+        const p1 = new Point([1.0, 2.0]);
+        const p2 = new Point([2.0, 3.0]);
+        const geometry = new LineString([p1, p2]);
+        const wkt = geometry.asText();
+
+        expect(wkt).to.equal("LINESTRING(1.0 2.0,2.0 3.0)");
+
+    });
+
+
 });

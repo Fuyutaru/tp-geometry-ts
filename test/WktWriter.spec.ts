@@ -6,6 +6,7 @@ import WktWriter from "../src/WktWriter";
 import Geometry from "../src/Geometry";
 import Envelope from "../src/Envelope";
 import GeometryVisitor from "../src/GeometryVisitor";
+import AbstractGeometry from "../src/AbstractGeometry";
 
 describe("test WktWriter", () => {
     it("test zero point", () => {
@@ -49,7 +50,7 @@ describe("test WktWriter", () => {
 
 
     it("test error", () => {
-        class Rond implements Geometry{
+        class Rond extends AbstractGeometry{
             getType(): string {
                 return "";
             }
@@ -72,6 +73,8 @@ describe("test WktWriter", () => {
             accept(visitor: GeometryVisitor) {
                 
             }
+
+    
 
         }
 

@@ -53,6 +53,15 @@ describe("test Point", () => {
         expect(env.toString()).to.equal(out);
     });
 
+    it("test astext", () => {
+        const p = new Point([3.0,4.0]);
+
+        const wkt = p.asText();
+
+        
+        expect(wkt).to.equal("POINT(3.0 4.0)");
+    });
+
 
 });
 

@@ -16,7 +16,6 @@ export default class WktVisitor implements GeometryVisitor{
             wkt = "POINT(" + x.toFixed(1) + " " + y.toFixed(1) + ")";
         }
         this.buffer = wkt;
-        console.log(wkt);
     }
 
     visitLineString(linestring: LineString) {
@@ -41,7 +40,6 @@ export default class WktVisitor implements GeometryVisitor{
             }
         }
         this.buffer = wkt;
-        console.log(wkt);
     }
 
     getResult(): String{
