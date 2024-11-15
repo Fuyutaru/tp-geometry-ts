@@ -44,7 +44,9 @@ export default class WktVisitor implements GeometryVisitor{
         console.log(wkt);
     }
 
-
+    getResult(): String{
+        return this.buffer;
+    }
 
 
 }

@@ -48,7 +48,7 @@ describe("test WktWriter", () => {
     });
 
 
-    it("test linestring", () => {
+    it("test error", () => {
         class Rond implements Geometry{
             getType(): string {
                 return "";
