@@ -62,6 +62,8 @@ describe("test Point", () => {
         expect(wkt).to.equal("POINT(3.0 4.0)");
     });
 
+    
+
 
 });
 

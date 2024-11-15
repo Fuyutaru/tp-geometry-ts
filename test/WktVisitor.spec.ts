@@ -37,7 +37,7 @@ describe("test WktVisitor", () => {
 
     });
 
-    it("test linestring vide", () => {
+    it("test linestring", () => {
         const visitor = new WktVisitor();
         const p1 = new Point([1.0, 2.0]);
         const p2 = new Point([2.0, 3.0]);

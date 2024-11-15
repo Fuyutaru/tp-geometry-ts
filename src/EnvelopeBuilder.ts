@@ -1,7 +1,10 @@
 import Coordinate from "./Coordinate";
 import Envelope from "./Envelope";
+import GeometryVisitor from "./GeometryVisitor";
+import LineString from "./LineString";
+import Point from "./Point";
 
-export default class EnvelopeBuilder{
+export default class EnvelopeBuilder implements GeometryVisitor{
 
     private xMin?: number;
     private xMax?: number;
@@ -26,5 +29,17 @@ export default class EnvelopeBuilder{
 
     build(): Envelope{
         return new Envelope([this.xMin, this.yMin], [this.xMax, this.yMax]);
+    }
+
+    visitPoint(point: Point) {
+        this.insert(point.getCoordinate());
+    }
+
+    visitLineString(linestring: LineString) {
+        for(let i = 0; i < linestring.getNumPoints(); i++){
+            let coord = linestring.getPointN(i).getCoordinate();
+            this.insert(coord);
+
+        }
     }
 }

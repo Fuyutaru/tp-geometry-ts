@@ -1,8 +1,5 @@
 import AbstractGeometry from "./AbstractGeometry";
 import Coordinate from "./Coordinate";
-import Envelope from "./Envelope";
-import EnvelopeBuilder from "./EnvelopeBuilder";
-import Geometry from "./Geometry";
 import GeometryVisitor from "./GeometryVisitor";
 
 export default class Point extends AbstractGeometry{
@@ -32,12 +29,6 @@ export default class Point extends AbstractGeometry{
     const c = new Point([x,y]);
     // return new Points([...this.coordinate]);
     return c;
-  }
-
-  getEnvelope(): Envelope {
-    const builder = new EnvelopeBuilder();
-    builder.insert(this.coordinate);
-    return builder.build();
   }
 
 
