@@ -4,10 +4,10 @@ import Geometry from "./Geometry";
 import Point from "./Point";
 
 export default class LineString implements Geometry{
-    private points?: Array<Point>;
+    private points: Array<Point>;
 
     constructor(points?: Array<Point>) {
-        this.points = points ? points : [];
+        this.points = points || [];
       }
 
       getType(): string {
@@ -43,7 +43,7 @@ export default class LineString implements Geometry{
       }
 
       getNumPoints(): number{
-        return this.isEmpty() ? 0 : this.points.length;
+        return this.points.length;
       }
 
       getPointN(n: number): Point{

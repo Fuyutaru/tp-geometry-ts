@@ -4,10 +4,10 @@ import EnvelopeBuilder from "./EnvelopeBuilder";
 import Geometry from "./Geometry";
 
 export default class Point implements Geometry{
-  private coordinate?: Coordinate;
+  private coordinate: Coordinate;
 
   constructor(coordinate?: Coordinate) {
-    this.coordinate = coordinate ? coordinate : [Number.NaN, Number.NaN];
+    this.coordinate = coordinate || [Number.NaN, Number.NaN];
   }
 
   getType(): string {
@@ -41,11 +41,11 @@ export default class Point implements Geometry{
   }
 
   x(): number {
-    return this.isEmpty() ? Number.NaN : this.coordinate[0] ;
+    return this.coordinate[0] ;
   }
 
   y(): number {
-    return this.isEmpty() ? Number.NaN : this.coordinate[1] ;
+    return this.coordinate[1] ;
   }
 
 }
