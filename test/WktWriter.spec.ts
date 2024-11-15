@@ -5,6 +5,7 @@ import LineString from "../src/LineString";
 import WktWriter from "../src/WktWriter";
 import Geometry from "../src/Geometry";
 import Envelope from "../src/Envelope";
+import GeometryVisitor from "../src/GeometryVisitor";
 
 describe("test WktWriter", () => {
     it("test zero point", () => {
@@ -66,6 +67,10 @@ describe("test WktWriter", () => {
 
             getEnvelope(): Envelope {
                 return new Envelope();
+            }
+
+            accept(visitor: GeometryVisitor) {
+                
             }
 
         }
